@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<h3>KALKULATOR SEDERHANA</h3>
+<h5><b>NAMA : MUHAMAD ALDI</h5></b>
+<h5><b>KELAS : MI22A</h5></b>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <div id="buttons">
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="performOperation('+')">+</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="performOperation('-')">-</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="performOperation('*')">*</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="performOperation('/')">/</button>
+            <button onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+
+    <script>
+        // let display = document.getElementById('display');
+let operation = '';
+let operand1 = 0;
+let operand2 = null;
+
+function appendNumber(number) {
+    if (operation === '') {
+        operand1 = (operand1 * 10) + number;
+        display.value = operand1;
+    } else {
+        if (operand2 === null) {
+            operand2 = number;
+        } else {
+            operand2 = (operand2 * 10) + number;
+        }
+        display.value = operand2;
+    }
+}
+
+function performOperation(op) {
+    operation = op;
+    if (operand2 !== null) {
+        calculateResult();
+    }
+}
+
+function calculateResult() {
+    switch (operation) {
+        case '+':
+            operand1 += operand2;
+            break;
+        case '-':
+            operand1 -= operand2;
+            break;
+        case '*':
+            operand1 *= operand2;
+            break;
+        case '/':
+            operand1 /= operand2;
+            break;
+    }
+    operand2 = null;
+    display.value = operand1;
+}
+
+function clearDisplay() {
+    operand1 = 0;
+    operand2 = null;
+    operation = '';
+    display.value = '';
+}
+    </script>
+    <h5>JALAN-JALAN KE BEKASIH.....CAKEEEEP</h5>
+    <h5>SEKIAN TERIMA KASIH</h5>
+</body>
+</html>
